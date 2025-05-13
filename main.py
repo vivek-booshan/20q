@@ -12,21 +12,11 @@ def run(playwright: Playwright) -> None:
     page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_role("link", name="Think in American english").click()
     page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_role("button", name="Play").click()
     # ---------------------
-    # question = page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_text("Q1").inner_text()
-    # choice = qp.parse_question_inner_text(question)
-    # page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_role("link", name=choice, exact=True).click()
-    # question = page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_text("Q2").inner_text()
-    # choice = qp.parse_question_inner_text(question)
-    # page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_role("link", name=choice, exact=True).click()
-    # question = page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_text("Q3").inner_text()
-    # choice = qp.parse_question_inner_text(question)
-
     for i in range(25):
         question = page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_text(f"Q{i+1}").inner_text()
         choice = qp.parse_question_inner_text(question)
         # TODO (vivek): sometimes errors with a Call log: -waiting for locator(), need to identify issue
         page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_role("link", name=choice, exact=True).click()
-
     # ---------------------
     context.close()
     browser.close()
