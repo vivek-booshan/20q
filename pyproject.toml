@@ -1,7 +1,7 @@
 [project]
 name = "20q"
 version = "0.1.0"
-description = "Add your description here"
+description = "A 20q.net thingy using a headless browser via playwright"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
