@@ -41,7 +41,7 @@ def parse_question_inner_text(inner_text):
         options = [opt.strip() for opt in lines[1].split(",") if opt.strip()]
     elif len(lines) == 3:
         options = [opt.strip() for opt in lines[1].split(",")[:-1] if opt.strip()]
-        options.extend(opt.strip() for opt in lines[2].split() if opt.strip())
+        options.extend(opt.strip() for opt in lines[2].split(",") if opt.strip())
     else:
         raise ValueError("Invalid question")
 
