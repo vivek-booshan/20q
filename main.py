@@ -36,6 +36,7 @@ def run(playwright: Playwright) -> None:
 
         # TODO (vivek): handle textbox
         # page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_role("textbox")
+        pass
     elif who_won == "20Q won!":
         # TODO (vivek): Handle if 20q wins
         pass
