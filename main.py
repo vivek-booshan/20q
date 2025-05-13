@@ -24,6 +24,7 @@ def run(playwright: Playwright) -> None:
     for i in range(25):
         question = page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_text(f"Q{i+1}").inner_text()
         choice = qp.parse_question_inner_text(question)
+        # TODO (vivek): sometimes errors with a Call log: -waiting for locator(), need to identify issue
         page.locator("frame[name=\"mainFrame\"]").content_frame.get_by_role("link", name=choice, exact=True).click()
 
     # ---------------------
