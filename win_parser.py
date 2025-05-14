@@ -2,6 +2,7 @@ import typing
 
 def parse_youwin_options(youwon_options: typing.List["Locator"]) -> typing.Union[str, None]:
     print("Is it one of these ...")
+    # TODO: no name attribute
     options = [option.__name__ for option in youwon_options if option.__name__]
     options.append("Other")
     for option in youwon_options:
