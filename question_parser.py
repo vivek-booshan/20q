@@ -1,7 +1,6 @@
 import re
-import typing
 
-def parse_question_aria(aria_text: str) -> typing.Union[str, None]:
+def parse_question_aria(aria_text: str) -> str | None:
     
     lines = aria_text.splitlines()
     print(lines)
@@ -32,7 +31,7 @@ def parse_question_aria(aria_text: str) -> typing.Union[str, None]:
 
     return None
 
-def parse_question_inner_text(inner_text: str) -> typing.Union[str, None]: 
+def parse_question_inner_text(inner_text: str) -> str | None: 
     """
     Extracts the question and options from the inner_text of a locator. 
     """
