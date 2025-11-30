@@ -1,4 +1,5 @@
-def parse_youwin_options(youwon_options: playwright.Locator) -> str | None:
+from playwright.sync_api import Locator
+def parse_youwin_options(youwon_options: Locator) -> str | None:
     print("Is it one of these ...")
     # TODO: no name attribute
     options = [option.__name__ for option in youwon_options if option.__name__]

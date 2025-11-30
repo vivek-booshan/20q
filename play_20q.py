@@ -1,6 +1,6 @@
 import question_parser as qp
 import win_parser as wp
-from playwright.sync_api import Playwright, sync_playwright, Locator
+from playwright.sync_api import Playwright, sync_playwright, FrameLocator 
 
 def run():
     with sync_playwright() as playwright:
@@ -12,14 +12,17 @@ def _run(playwright: Playwright):
     # browser = playwright.chromium.launch(headless=True)
     browser = playwright.firefox.launch(headless=True)
     context = browser.new_context()
+    print("Opening context")
 
     # --------------------- start game
     page = context.new_page()
     page.goto("http://www.20q.net/")
+    print("Reached homepage")
     frame = page.locator("frame[name=\"mainFrame\"]").content_frame
     frame.get_by_role("link", name="Think in American english").click()
+    print("Americna English")
     frame.get_by_role("button", name="Play").click()
-
+    print("Starting Play")
     play_again = True
     while play_again:
     # --------------------- play game
@@ -40,7 +43,7 @@ def _run(playwright: Playwright):
     browser.close()
     return
 
-def _questions(frame: Locator.content_frame) -> bool:
+def _questions(frame: FrameLocator) -> bool:
     """
     Handles running through the questions
     Returns true if 20q won, false else
@@ -54,7 +57,7 @@ def _questions(frame: Locator.content_frame) -> bool:
             return True
     return False
 
-def _win_condition(guessed: bool, frame: Locator.content_frame):
+def _win_condition(guessed: bool, frame: FrameLocator):
     if guessed:
         return
 
